@@ -81,6 +81,10 @@
 
         if (!self.address)
             _consolidatedServiceDescription.address = _lastKnownIPAddress;
+        
+        id manufacturer = dict[@"manufacturer"];
+        if (manufacturer && ![manufacturer isKindOfClass:[NSNull class]])
+            _manufacturer = manufacturer;
     }
 
     return self;
@@ -96,7 +100,8 @@
     if (self.lastSeenOnWifi) jsonObject[@"lastSeenOnWifi"] = self.lastSeenOnWifi;
     if (self.lastConnected) jsonObject[@"lastConnected"] = @(self.lastConnected);
     if (self.lastDetection) jsonObject[@"lastDetection"] = @(self.lastDetection);
-
+    if (self.manufacturer) jsonObject[@"manufacturer"] = self.manufacturer;
+    
     NSMutableDictionary *services = [NSMutableDictionary new];
 
     [self.services enumerateObjectsUsingBlock:^(DeviceService *service, NSUInteger idx, BOOL *stop)

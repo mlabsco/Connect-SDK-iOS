@@ -545,6 +545,7 @@
     device.lastDetection = [[NSDate date] timeIntervalSince1970];
     device.lastKnownIPAddress = description.address;
     device.lastSeenOnWifi = _currentSSID;
+    device.manufacturer = description.manufacturer;
 
     [self addServiceDescription:description toDevice:device];
 

@@ -90,6 +90,9 @@
 /*! Last time (in seconds from 1970) that this ConnectableDevice was detected. */
 @property (nonatomic) double lastDetection;
 
+@property (nonatomic, copy) NSString *manufacturer;
+
+
 // @cond INTERNAL
 - (NSString *) connectedServiceNames;
 // @endcond
