@@ -25,6 +25,8 @@
 #import "MediaControl.h"
 #import "WebAppLauncher.h"
 
+#import <WebKit/WebKit.h>
+
 @class AirPlayService;
 
 @interface AirPlayServiceMirrored : NSObject<WebAppLauncher>
@@ -39,7 +41,7 @@
 @property (nonatomic, readonly) AirPlayService *service;
 
 @property (nonatomic, readonly) UIWindow *secondWindow;
-@property (nonatomic, readonly) UIWebView *webAppWebView;
+@property (nonatomic, readonly) WKWebView *webAppWebView;
 
 @property (nonatomic, readonly) BOOL connecting;
 @property (nonatomic, readonly) BOOL connected;

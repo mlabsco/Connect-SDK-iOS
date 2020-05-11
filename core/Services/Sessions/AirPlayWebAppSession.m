@@ -217,7 +217,8 @@
 
     NSString *commandString = [NSString stringWithFormat:@"window.connectManager.handleMessage({from: -1, message: \"%@\" })", message];
 
-    [self.service.mirroredService.webAppWebView stringByEvaluatingJavaScriptFromString:commandString];
+    [self.service.mirroredService.webAppWebView evaluateJavaScript:commandString completionHandler:^(id result, NSError *error) {
+    }];
 
     if (success)
         success(nil);
@@ -243,7 +244,8 @@
         NSString *messageString = [[NSString alloc] initWithData:messageData encoding:NSUTF8StringEncoding];
         NSString *commandString = [NSString stringWithFormat:@"window.connectManager.handleMessage({from: -1, message: %@ })", messageString];
 
-        [self.service.mirroredService.webAppWebView stringByEvaluatingJavaScriptFromString:commandString];
+        [self.service.mirroredService.webAppWebView evaluateJavaScript:commandString completionHandler:^(id result, NSError *error) {
+        }];
 
         if (success)
             success(nil);

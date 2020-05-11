@@ -22,8 +22,9 @@
 #import "ConnectError.h"
 
 #import "NSObject+FeatureNotSupported_Private.h"
+#import <WebKit/WebKit.h>
 
-@interface AirPlayService () <UIWebViewDelegate, ServiceCommandDelegate, UIAlertViewDelegate>
+@interface AirPlayService () <ServiceCommandDelegate, UIAlertViewDelegate, WKNavigationDelegate>
 
 @end
 
