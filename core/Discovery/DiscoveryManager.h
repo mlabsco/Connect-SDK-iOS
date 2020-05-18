@@ -183,4 +183,6 @@
 
 - (UIViewController *) topViewController;
 
+- (void) setWindow:(UIWindow *) window;
+
 @end
