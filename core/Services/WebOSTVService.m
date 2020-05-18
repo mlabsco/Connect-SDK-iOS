@@ -307,9 +307,7 @@
     NSString *ok = [[NSBundle mainBundle] localizedStringForKey:@"Connect_SDK_Pair_OK" value:@"OK" table:@"ConnectSDK"];
     NSString *cancel = [[NSBundle mainBundle] localizedStringForKey:@"Connect_SDK_Pair_Cancel" value:@"Cancel" table:@"ConnectSDK"];
     
-    _pairingAlertController = [[UIAlertController alloc] init];
-    _pairingAlertController.title = title;
-    _pairingAlertController.message = message;
+    _pairingAlertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancel style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [self disconnect];
@@ -369,10 +367,8 @@
     NSString *alertMessage = [[NSBundle mainBundle] localizedStringForKey:@"Connect_SDK_Pair_Request" value:message table:@"ConnectSDK"];
     NSString *ok = [[NSBundle mainBundle] localizedStringForKey:@"Connect_SDK_Pair_OK" value:@"OK" table:@"ConnectSDK"];
     if(!_pinAlertViewController){
-        //_pinAlertView = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:self cancelButtonTitle:nil otherButtonTitles:ok, nil];
-        _pinAlertViewController = [[UIAlertController alloc] init];
-        _pinAlertViewController.title = alertTitle;
-        _pinAlertViewController.message = alertMessage;
+        //_pinAlertView = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:self cancelButtonTitle:nil otherButtonTitles:ok, nil];        
+        _pinAlertViewController = [UIAlertController alertControllerWithTitle:alertTitle message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         }];
         [_pinAlertViewController addAction:okAction];
