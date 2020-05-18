@@ -55,10 +55,13 @@
 
     NSTimer *_ssidTimer;
     NSString *_currentSSID;
+    
+    UIWindow *_window;
 }
 
 @synthesize pairingLevel = _pairingLevel;
 @synthesize useDeviceStore = _useDeviceStore;
+@synthesize window = _window;
 
 + (DiscoveryManager *) _sharedManager
 {
@@ -103,10 +106,6 @@
 }
 
 - (void) updateWindow:(UIWindow *) window {
-    [self setWindow: window];
-}
-
-- (void) setWindow:(UIWindow *) window {
     self.window = window;
 }
 
