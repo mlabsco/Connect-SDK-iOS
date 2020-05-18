@@ -103,6 +103,10 @@
 }
 
 - (void) updateWindow:(UIWindow *) window {
+    [self setWindow: window];
+}
+
+- (void) setWindow:(UIWindow *) window {
     self.window = window;
 }
 
