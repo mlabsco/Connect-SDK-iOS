@@ -128,7 +128,7 @@
     return [self topViewController:tabController.selectedViewController];
   }
   if (rootViewController.presentedViewController) {
-    return [self topViewController:rootViewController];
+    return [self topViewController:rootViewController.presentedViewController];
   }
   return rootViewController;
 }
