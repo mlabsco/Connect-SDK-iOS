@@ -80,6 +80,8 @@
  */
 - (NSDictionary *) allDevices;
 
+- (UIWindow *) window;
+
 #pragma mark - Configuration & Device Registration
 
 // @cond INTERNAL
@@ -178,5 +180,7 @@
 @property (nonatomic, readonly) NSArray *discoveryProviders;
 
 // @endcond
+
+- (UIViewController *) topViewController;
 
 @end

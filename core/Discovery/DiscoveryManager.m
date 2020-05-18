@@ -102,6 +102,34 @@
     return [self initWithAppStateChangeNotifier:nil];
 }
 
+- (void) setWindow:(UIWindow *) window {
+    self.window = window;
+}
+
+- (UIViewController *) topViewController {
+    if (self.window == nil) {
+        return nil;
+    }
+    
+    UIViewController *rootViewController = self.window.rootViewController;
+    return [self topViewController:rootViewController];
+}
+
+- (UIViewController *)topViewController:(UIViewController *)rootViewController{
+  if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+    UINavigationController *navigationController = (UINavigationController *)rootViewController;
+    return [self topViewController:[navigationController.viewControllers lastObject]];
+  }
+  if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+    UITabBarController *tabController = (UITabBarController *)rootViewController;
+    return [self topViewController:tabController.selectedViewController];
+  }
+  if (rootViewController.presentedViewController) {
+    return [self topViewController:rootViewController];
+  }
+  return rootViewController;
+}
+
 #pragma mark - Private Init
 
 - (instancetype) initWithAppStateChangeNotifier:(nullable AppStateChangeNotifier *)stateNotifier
