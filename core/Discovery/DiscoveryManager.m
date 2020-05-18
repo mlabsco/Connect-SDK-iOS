@@ -102,7 +102,7 @@
     return [self initWithAppStateChangeNotifier:nil];
 }
 
-- (void) setWindow:(UIWindow *) window {
+- (void) updateWindow:(UIWindow *) window {
     self.window = window;
 }
 
