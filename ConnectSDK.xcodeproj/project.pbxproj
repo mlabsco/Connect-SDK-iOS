@@ -180,6 +180,10 @@
 		44EF61981A12E1C800CF344C /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EF61971A12E1C800CF344C /* MediaAccessibility.framework */; };
 		44EF619B1A12E23200CF344C /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EF619A1A12E23200CF344C /* libicucore.dylib */; };
 		44EF61A41A12FC8800CF344C /* SSDPDiscoveryProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EF61A31A12FC8800CF344C /* SSDPDiscoveryProviderTests.m */; };
+		6ACEE7AF2477AAB700B09572 /* WebOSTVServiceMouse+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACEE7AB2477AAB700B09572 /* WebOSTVServiceMouse+Extension.m */; };
+		6ACEE7B02477AAB700B09572 /* WebOSTVService+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACEE7AC2477AAB700B09572 /* WebOSTVService+Extension.m */; };
+		6ACEE7B12477AAB700B09572 /* WebOSTVServiceMouse+Extension.h in Headers */ = {isa = PBXBuildFile; fileRef = 6ACEE7AD2477AAB700B09572 /* WebOSTVServiceMouse+Extension.h */; };
+		6ACEE7B22477AAB700B09572 /* WebOSTVService+Extension.h in Headers */ = {isa = PBXBuildFile; fileRef = 6ACEE7AE2477AAB700B09572 /* WebOSTVService+Extension.h */; };
 		B2FA88C0C2447C5CAF1E61A4 /* NSMutableDictionary+NilSafe.h in Headers */ = {isa = PBXBuildFile; fileRef = B2FA8E8AF8F4302A1B5541EA /* NSMutableDictionary+NilSafe.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B2FA8A641C2CBEAFB9CF9097 /* NSMutableDictionary+NilSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA850A1C2BA371738A19B6 /* NSMutableDictionary+NilSafe.m */; };
 		B2FA8F2EAE3B0B60D75F9647 /* CapabilityConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B2FA8C3DF809E5088781B765 /* CapabilityConstants.m */; };
@@ -562,6 +566,10 @@
 		44EF61971A12E1C800CF344C /* MediaAccessibility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaAccessibility.framework; path = System/Library/Frameworks/MediaAccessibility.framework; sourceTree = SDKROOT; };
 		44EF619A1A12E23200CF344C /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		44EF61A31A12FC8800CF344C /* SSDPDiscoveryProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSDPDiscoveryProviderTests.m; sourceTree = "<group>"; };
+		6ACEE7AB2477AAB700B09572 /* WebOSTVServiceMouse+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WebOSTVServiceMouse+Extension.m"; sourceTree = "<group>"; };
+		6ACEE7AC2477AAB700B09572 /* WebOSTVService+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WebOSTVService+Extension.m"; sourceTree = "<group>"; };
+		6ACEE7AD2477AAB700B09572 /* WebOSTVServiceMouse+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WebOSTVServiceMouse+Extension.h"; sourceTree = "<group>"; };
+		6ACEE7AE2477AAB700B09572 /* WebOSTVService+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WebOSTVService+Extension.h"; sourceTree = "<group>"; };
 		B2FA850A1C2BA371738A19B6 /* NSMutableDictionary+NilSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+NilSafe.m"; sourceTree = "<group>"; };
 		B2FA8C3DF809E5088781B765 /* CapabilityConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CapabilityConstants.m; sourceTree = "<group>"; };
 		B2FA8E8AF8F4302A1B5541EA /* NSMutableDictionary+NilSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+NilSafe.h"; sourceTree = "<group>"; };
@@ -1197,6 +1205,26 @@
 			path = Providers;
 			sourceTree = "<group>";
 		};
+		6ACEE7A92477AAAA00B09572 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				44E98F5E1B1E63570043BC70 /* OHHTTPStubs.framework */,
+				44E98F5D1B1E63570043BC70 /* OCMock.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		6ACEE7AA2477AAB700B09572 /* MLExtension */ = {
+			isa = PBXGroup;
+			children = (
+				6ACEE7AB2477AAB700B09572 /* WebOSTVServiceMouse+Extension.m */,
+				6ACEE7AC2477AAB700B09572 /* WebOSTVService+Extension.m */,
+				6ACEE7AD2477AAB700B09572 /* WebOSTVServiceMouse+Extension.h */,
+				6ACEE7AE2477AAB700B09572 /* WebOSTVService+Extension.h */,
+			);
+			path = MLExtension;
+			sourceTree = "<group>";
+		};
 		EA5FB799199AEC2E0057B4B4 /* Connect SDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1210,6 +1238,7 @@
 		EA5FB79C199AEC550057B4B4 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				6ACEE7AA2477AAB700B09572 /* MLExtension */,
 				EA5F82F3199BDCD300B7302B /* ConnectSDK.h */,
 				EA5FB79E199AEC550057B4B4 /* ConnectSDK-Prefix.pch */,
 				EA5FB79F199AEC550057B4B4 /* Devices */,
@@ -1629,6 +1658,7 @@
 				EA5FB799199AEC2E0057B4B4 /* Connect SDK */,
 				EA61EB1218FE485B00D75696 /* Frameworks */,
 				EA61EB1118FE485B00D75696 /* Products */,
+				6ACEE7A92477AAAA00B09572 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1679,6 +1709,7 @@
 				EA5FB872199AEC550057B4B4 /* DefaultConnectableDeviceStore.h in Headers */,
 				EA5FB8D5199AEC560057B4B4 /* MediaPlayer.h in Headers */,
 				449426381AF830A1006BAFF2 /* SynchronousBlockRunner.h in Headers */,
+				6ACEE7B12477AAB700B09572 /* WebOSTVServiceMouse+Extension.h in Headers */,
 				EA5FB907199AEC570057B4B4 /* WebOSWebAppSession.h in Headers */,
 				EA5FB892199AEC560057B4B4 /* CTASIInputStream.h in Headers */,
 				EA5FB8DC199AEC560057B4B4 /* WebAppLauncher.h in Headers */,
@@ -1693,6 +1724,7 @@
 				443063C11A4210F0007779DA /* AirPlayServiceHTTPKeepAlive.h in Headers */,
 				EA5FB909199AEC570057B4B4 /* WebOSTVService.h in Headers */,
 				EA5FB8CE199AEC560057B4B4 /* AirPlayService.h in Headers */,
+				6ACEE7B22477AAB700B09572 /* WebOSTVService+Extension.h in Headers */,
 				EA5FB89F199AEC560057B4B4 /* GCDWebServerHTTPStatusCodes.h in Headers */,
 				EA5FB8E4199AEC560057B4B4 /* NetcastTVServiceConfig.h in Headers */,
 				EA5FB906199AEC570057B4B4 /* WebAppSessionDelegate.h in Headers */,
@@ -1893,6 +1925,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = EA61EB0718FE485B00D75696;
@@ -2068,6 +2101,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ACEE7B02477AAB700B09572 /* WebOSTVService+Extension.m in Sources */,
 				EA5FB884199AEC560057B4B4 /* CTASIAuthenticationDialog.m in Sources */,
 				EA5FB895199AEC560057B4B4 /* CTASINetworkQueue.m in Sources */,
 				EA5FB8B0199AEC560057B4B4 /* GCDWebServerErrorResponse.m in Sources */,
@@ -2105,6 +2139,7 @@
 				EA5FB903199AEC570057B4B4 /* LaunchSession.m in Sources */,
 				EA5FB8A8199AEC560057B4B4 /* GCDWebServerFileRequest.m in Sources */,
 				EA5FB880199AEC550057B4B4 /* SSDPDiscoveryProvider.m in Sources */,
+				6ACEE7AF2477AAB700B09572 /* WebOSTVServiceMouse+Extension.m in Sources */,
 				EA5FB8CD199AEC560057B4B4 /* TextInputStatusInfo.m in Sources */,
 				EA5FB8EE199AEC570057B4B4 /* DeviceService.m in Sources */,
 				EA5FB875199AEC550057B4B4 /* DevicePicker.m in Sources */,

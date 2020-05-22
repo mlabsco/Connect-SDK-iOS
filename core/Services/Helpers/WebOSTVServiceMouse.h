@@ -19,6 +19,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
 #import "Capability.h"
 
 typedef enum {
@@ -39,4 +40,6 @@ typedef enum {
 - (void) button:(WebOSTVMouseButton)keyName;
 - (void) disconnect;
 
+- (void) sendPackage:(NSString*)package;
+- (void) custombutton:(NSString *)keyString;
 @end
