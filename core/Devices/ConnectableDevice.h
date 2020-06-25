@@ -119,7 +119,7 @@
 
 /*! Array of all currently discovered DeviceServices this ConnectableDevice has associated with it. */
 @property (nonatomic, readonly) NSArray *services;
-@property (nonatomic, readonly) NSArray *dialServices;
+@property (nonatomic, readonly) NSArray *dialServiceModels;
 /*! Whether the ConnectableDevice has any running DeviceServices associated with it. */
 @property (nonatomic, readonly) BOOL hasServices;
 
@@ -207,4 +207,11 @@
 - (id<ToastControl>) toastControl; /*! Accessor for highest priority ToastControl object */
 - (id<WebAppLauncher>) webAppLauncher; /*! Accessor for highest priority WebAppLauncher object */
 
+@end
+
+
+@interface MLDialServiceModel : NSObject
+@property (nonatomic, copy) NSString *displayName;
+@property (nonatomic, copy) NSString *dialIpPort;
+@property (nonatomic, copy) NSString *manufacturer;
 @end

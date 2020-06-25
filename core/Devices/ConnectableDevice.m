@@ -31,7 +31,7 @@
 @implementation ConnectableDevice
 {
     NSMutableDictionary *_services;
-    NSMutableArray *_dialServices;
+    NSMutableArray *_dialServiceModels;
 }
 
 @synthesize serviceDescription = _consolidatedServiceDescription;
@@ -46,7 +46,7 @@
     {
         _consolidatedServiceDescription = [ServiceDescription new];
         _services = [[NSMutableDictionary alloc] init];
-        _dialServices = [[NSMutableArray alloc] init];
+        _dialServiceModels = [[NSMutableArray alloc] init];
     }
 
     return self;
@@ -287,9 +287,9 @@
     return [_services allValues];
 }
 
-- (NSArray *) dialServices
+- (NSArray *) dialServiceModels
 {
-    return _dialServices;
+    return _dialServiceModels;
 }
 
 - (BOOL) hasServices
@@ -298,9 +298,9 @@
 }
 
 - (BOOL) isExistService:(DeviceService *)service {
-    for (DeviceService *s in _dialServices) {
-        if ([s.serviceDescription.friendlyName isEqualToString:service.serviceDescription.friendlyName]
-            && [s.serviceDescription.manufacturer isEqualToString:service.serviceDescription.manufacturer])
+    for (MLDialServiceModel *s in _dialServiceModels) {
+        if ([s.displayName isEqualToString:service.serviceDescription.friendlyName]
+            && [s.manufacturer isEqualToString:service.serviceDescription.manufacturer])
             return YES;
     }
     return NO;
@@ -310,7 +310,11 @@
 {
     if ([service isKindOfClass:[DIALService class]]
         && ([self isExistService:service] == NO)) {
-        [_dialServices addObject:service];
+        MLDialServiceModel *m = [[MLDialServiceModel alloc] init];
+        m.dialIpPort = service.serviceDescription.commandURL.absoluteString;
+        m.displayName = service.serviceDescription.friendlyName;
+        m.manufacturer = service.serviceDescription.manufacturer;
+        [_dialServiceModels addObject:m];
     }
     
     DeviceService *existingService = [_services objectForKey:service.serviceName];
@@ -923,4 +927,8 @@
     return foundWebAppLauncher;
 }
 
+@end
+
+
+@implementation MLDialServiceModel
 @end
