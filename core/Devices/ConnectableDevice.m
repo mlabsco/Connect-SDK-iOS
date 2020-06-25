@@ -314,6 +314,8 @@
         m.dialIpPort = service.serviceDescription.commandURL.absoluteString;
         m.displayName = service.serviceDescription.friendlyName;
         m.manufacturer = service.serviceDescription.manufacturer;
+        m.modelName = service.serviceDescription.modelName;
+        m.modelNumber = service.serviceDescription.modelNumber;
         [_dialServiceModels addObject:m];
     }
     

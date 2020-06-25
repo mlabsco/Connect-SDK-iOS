@@ -214,4 +214,6 @@
 @property (nonatomic, copy) NSString *displayName;
 @property (nonatomic, copy) NSString *dialIpPort;
 @property (nonatomic, copy) NSString *manufacturer;
+@property (nonatomic, copy) NSString *modelName;
+@property (nonatomic, copy) NSString *modelNumber;
 @end
