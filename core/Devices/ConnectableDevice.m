@@ -26,10 +26,12 @@
 #import "TextInputControl.h"
 #import "CTGuid.h"
 #import "DiscoveryManager.h"
+#import "DIALService.h"
 
 @implementation ConnectableDevice
 {
     NSMutableDictionary *_services;
+    NSMutableArray *_dialServices;
 }
 
 @synthesize serviceDescription = _consolidatedServiceDescription;
@@ -44,6 +46,7 @@
     {
         _consolidatedServiceDescription = [ServiceDescription new];
         _services = [[NSMutableDictionary alloc] init];
+        _dialServices = [[NSMutableArray alloc] init];
     }
 
     return self;
@@ -284,13 +287,32 @@
     return [_services allValues];
 }
 
+- (NSArray *) dialServices
+{
+    return _dialServices;
+}
+
 - (BOOL) hasServices
 {
     return _services.count > 0;
 }
 
+- (BOOL) isExistService:(DeviceService *)service {
+    for (DeviceService *s in _dialServices) {
+        if ([s.serviceDescription.friendlyName isEqualToString:service.serviceDescription.friendlyName]
+            && [s.serviceDescription.manufacturer isEqualToString:service.serviceDescription.manufacturer])
+            return YES;
+    }
+    return NO;
+}
+
 - (void) addService:(DeviceService *)service
 {
+    if ([service isKindOfClass:[DIALService class]]
+        && ([self isExistService:service] == NO)) {
+        [_dialServices addObject:service];
+    }
+    
     DeviceService *existingService = [_services objectForKey:service.serviceName];
 
     NSArray *oldCapabilities = self.capabilities;
@@ -301,7 +323,7 @@
         {
             if (existingService.connected)
                 [existingService disconnect];
-
+            
             DLog(@"Removing %@ (%@)", existingService.serviceDescription.friendlyName, existingService.serviceName);
             [self removeServiceWithId:existingService.serviceName];
         } else
