@@ -749,13 +749,14 @@ static const NSInteger kValueNotFound = -1;
 
 - (NSTimeInterval) timeForString:(NSString *)timeString
 {
-    if (!timeString || [timeString isEqualToString:@""])
+    NSString *timeStrings = [timeString componentsSeparatedByString:@"."].firstObject;
+    if (!timeStrings || [timeStrings isEqualToString:@""])
         return 0;
 
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:m:ss"];
 
-    NSDate *time = [formatter dateFromString:timeString];
+    NSDate *time = [formatter dateFromString:timeStrings];
     NSDate *midnight = [formatter dateFromString:@"00:00:00"];
 
     NSTimeInterval timeInterval = [time timeIntervalSinceDate:midnight];
