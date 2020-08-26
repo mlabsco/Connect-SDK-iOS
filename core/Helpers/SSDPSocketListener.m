@@ -50,9 +50,7 @@
 {
 	if (nil == _workQueue)
 	{
-        @synchronized (self) {
-            _workQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        }
+		_workQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 	}
 	return _workQueue;
 }
@@ -61,9 +59,7 @@
 {
 	if (nil == _delegateQueue)
 	{
-        @synchronized (self) {
-            _delegateQueue = dispatch_get_main_queue();
-        }
+		_delegateQueue = dispatch_get_main_queue();
 	}
 	return _delegateQueue;
 }
@@ -139,20 +135,11 @@
 
 	_dispatchSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, theSocketDescriptor, 0, self.workQueue);
 	_socket = theSocketDescriptor;
-	__weak __typeof__(self) weakSelf = self;
-	dispatch_source_set_event_handler(self->_dispatchSource,
+	dispatch_source_set_event_handler(_dispatchSource,
 		^{
-			__typeof__(self) strongSelf = weakSelf;
-			if (strongSelf == nil) return;
-			if (!strongSelf->_socket || !strongSelf->_dispatchSource)
-			{
-				[strongSelf raiseError];
-				return;
-			}
-
 			struct sockaddr_in theIncomingAddr;
 			memset(&theIncomingAddr, 0, sizeof(theIncomingAddr));
-			size_t theDataSize = dispatch_source_get_data(strongSelf->_dispatchSource);
+			size_t theDataSize = dispatch_source_get_data(_dispatchSource);
 			char theBuffer[theDataSize + 1];
 			int theReceiveBytesCount = 0;
 			socklen_t theAddressSize = sizeof(theIncomingAddr);
@@ -168,16 +155,12 @@
 			NSString *thePath = [[NSString alloc] initWithBytes:theCAddrBuffer
 				length:strlen(theCAddrBuffer) encoding:NSUTF8StringEncoding];
 			NSData * theReceivedData = [NSData dataWithBytes:theBuffer length:theDataSize];
-
-			[strongSelf didReceiveData:theReceivedData fromAddress:thePath];
-		});
-
-	dispatch_source_set_cancel_handler(self->_dispatchSource,
-		^{
-			close(self->_socket);
+            
+			[self didReceiveData:theReceivedData fromAddress:thePath];
+			
 		});
 	
-	dispatch_resume(self->_dispatchSource);
+	dispatch_resume(_dispatchSource);
 }
 
 

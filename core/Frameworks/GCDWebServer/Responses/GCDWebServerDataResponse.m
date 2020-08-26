@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2019, Pierre-Olivier Latour
+ Copyright (c) 2012-2014, Pierre-Olivier Latour
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -31,21 +31,28 @@
 
 #import "GCDWebServerPrivate.h"
 
-@implementation GCDWebServerDataResponse {
+@interface GCDWebServerDataResponse () {
+@private
   NSData* _data;
   BOOL _done;
 }
+@end
 
-@dynamic contentType;
+@implementation GCDWebServerDataResponse
 
 + (instancetype)responseWithData:(NSData*)data contentType:(NSString*)type {
-  return [(GCDWebServerDataResponse*)[[self class] alloc] initWithData:data contentType:type];
+  return [[[self class] alloc] initWithData:data contentType:type];
 }
 
 - (instancetype)initWithData:(NSData*)data contentType:(NSString*)type {
+  if (data == nil) {
+    GWS_DNOT_REACHED();
+    return nil;
+  }
+  
   if ((self = [super init])) {
     _data = data;
-
+    
     self.contentType = type;
     self.contentLength = data.length;
   }
@@ -75,23 +82,23 @@
 @implementation GCDWebServerDataResponse (Extensions)
 
 + (instancetype)responseWithText:(NSString*)text {
-  return [(GCDWebServerDataResponse*)[self alloc] initWithText:text];
+  return [[self alloc] initWithText:text];
 }
 
 + (instancetype)responseWithHTML:(NSString*)html {
-  return [(GCDWebServerDataResponse*)[self alloc] initWithHTML:html];
+  return [[self alloc] initWithHTML:html];
 }
 
-+ (instancetype)responseWithHTMLTemplate:(NSString*)path variables:(NSDictionary<NSString*, NSString*>*)variables {
-  return [(GCDWebServerDataResponse*)[self alloc] initWithHTMLTemplate:path variables:variables];
++ (instancetype)responseWithHTMLTemplate:(NSString*)path variables:(NSDictionary*)variables {
+  return [[self alloc] initWithHTMLTemplate:path variables:variables];
 }
 
 + (instancetype)responseWithJSONObject:(id)object {
-  return [(GCDWebServerDataResponse*)[self alloc] initWithJSONObject:object];
+  return [[self alloc] initWithJSONObject:object];
 }
 
 + (instancetype)responseWithJSONObject:(id)object contentType:(NSString*)type {
-  return [(GCDWebServerDataResponse*)[self alloc] initWithJSONObject:object contentType:type];
+  return [[self alloc] initWithJSONObject:object contentType:type];
 }
 
 - (instancetype)initWithText:(NSString*)text {
@@ -112,12 +119,13 @@
   return [self initWithData:data contentType:@"text/html; charset=utf-8"];
 }
 
-- (instancetype)initWithHTMLTemplate:(NSString*)path variables:(NSDictionary<NSString*, NSString*>*)variables {
+- (instancetype)initWithHTMLTemplate:(NSString*)path variables:(NSDictionary*)variables {
   NSMutableString* html = [[NSMutableString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
   [variables enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSString* value, BOOL* stop) {
     [html replaceOccurrencesOfString:[NSString stringWithFormat:@"%%%@%%", key] withString:value options:0 range:NSMakeRange(0, html.length)];
   }];
-  return [self initWithHTML:html];
+  id response = [self initWithHTML:html];
+  return response;
 }
 
 - (instancetype)initWithJSONObject:(id)object {
@@ -127,7 +135,6 @@
 - (instancetype)initWithJSONObject:(id)object contentType:(NSString*)type {
   NSData* data = [NSJSONSerialization dataWithJSONObject:object options:0 error:NULL];
   if (data == nil) {
-    GWS_DNOT_REACHED();
     return nil;
   }
   return [self initWithData:data contentType:type];

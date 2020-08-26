@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2019, Pierre-Olivier Latour
+ Copyright (c) 2012-2014, Pierre-Olivier Latour
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -31,11 +31,18 @@
 
 #import "GCDWebServerPrivate.h"
 
-@implementation GCDWebServerFileRequest {
+@interface GCDWebServerFileRequest () {
+@private
+  NSString* _temporaryPath;
   int _file;
 }
+@end
 
-- (instancetype)initWithMethod:(NSString*)method url:(NSURL*)url headers:(NSDictionary<NSString*, NSString*>*)headers path:(NSString*)path query:(NSDictionary<NSString*, NSString*>*)query {
+@implementation GCDWebServerFileRequest
+
+@synthesize temporaryPath=_temporaryPath;
+
+- (instancetype)initWithMethod:(NSString*)method url:(NSURL*)url headers:(NSDictionary*)headers path:(NSString*)path query:(NSDictionary*)query {
   if ((self = [super initWithMethod:method url:url headers:headers path:path query:query])) {
     _temporaryPath = [NSTemporaryDirectory() stringByAppendingPathComponent:[[NSProcessInfo processInfo] globallyUniqueString]];
   }
@@ -78,14 +85,14 @@
   NSString* creationDateHeader = [self.headers objectForKey:@"X-GCDWebServer-CreationDate"];
   if (creationDateHeader) {
     NSDate* date = GCDWebServerParseISO8601(creationDateHeader);
-    if (!date || ![[NSFileManager defaultManager] setAttributes:@{NSFileCreationDate : date} ofItemAtPath:_temporaryPath error:error]) {
+    if (!date || ![[NSFileManager defaultManager] setAttributes:@{NSFileCreationDate: date} ofItemAtPath:_temporaryPath error:error]) {
       return NO;
     }
   }
   NSString* modifiedDateHeader = [self.headers objectForKey:@"X-GCDWebServer-ModifiedDate"];
   if (modifiedDateHeader) {
     NSDate* date = GCDWebServerParseRFC822(modifiedDateHeader);
-    if (!date || ![[NSFileManager defaultManager] setAttributes:@{NSFileModificationDate : date} ofItemAtPath:_temporaryPath error:error]) {
+    if (!date || ![[NSFileManager defaultManager] setAttributes:@{NSFileModificationDate: date} ofItemAtPath:_temporaryPath error:error]) {
       return NO;
     }
   }
