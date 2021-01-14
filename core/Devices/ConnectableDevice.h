@@ -67,10 +67,10 @@
 @property (nonatomic, readonly) NSString *id;
 
 /*! Current IP address of the ConnectableDevice. */
-@property (nonatomic, readonly) NSString *address;
+@property (nonatomic, copy) NSString *address;
 
 /*! An estimate of the ConnectableDevice's current friendly name. */
-@property (nonatomic, readonly) NSString *friendlyName;
+@property (nonatomic, copy) NSString *friendlyName;
 
 /*! An estimate of the ConnectableDevice's current model name. */
 @property (nonatomic, readonly) NSString *modelName;

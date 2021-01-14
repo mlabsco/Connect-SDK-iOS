@@ -398,6 +398,8 @@
 
     NSMutableDictionary *deviceDictionary = [NSMutableDictionary new];
     deviceDictionary[@"id"] = device.id;
+    deviceDictionary[@"address"] = device.address;
+    deviceDictionary[@"manufacturer"] = device.manufacturer;
     deviceDictionary[@"friendlyName"] = device.friendlyName;
     deviceDictionary[@"lastKnownIPAddress"] = device.lastKnownIPAddress;
     deviceDictionary[@"lastSeenOnWifi"] = device.lastSeenOnWifi;

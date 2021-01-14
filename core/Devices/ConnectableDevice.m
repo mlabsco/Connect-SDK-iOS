@@ -68,8 +68,10 @@
     if (self)
     {
         _id = dict[@"id"];
+        _address = dict[@"address"];
         _lastKnownIPAddress = dict[@"lastKnownIPAddress"];
         _lastSeenOnWifi = dict[@"lastSeenOnWifi"];
+        _friendlyName = dict[@"friendlyName"];
 
         id lastConnected = dict[@"lastConnected"];
         if (lastConnected && ![lastConnected isKindOfClass:[NSNull class]])
