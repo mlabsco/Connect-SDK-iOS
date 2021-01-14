@@ -84,6 +84,9 @@
         if (!self.address)
             _consolidatedServiceDescription.address = _lastKnownIPAddress;
         
+        if (!self.friendlyName)
+            _consolidatedServiceDescription.friendlyName = _friendlyName;
+        
         id manufacturer = dict[@"manufacturer"];
         if (manufacturer && ![manufacturer isKindOfClass:[NSNull class]])
             _manufacturer = manufacturer;
