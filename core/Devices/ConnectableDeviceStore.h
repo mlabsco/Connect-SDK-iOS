@@ -91,6 +91,9 @@
 /*!
  * A dictionary containing information about all ConnectableDevices in the ConnectableDeviceStore. To get a strongly-typed ConnectableDevice object, use the `getDeviceForUUID:` method.
  */
+
+- (void) updateMaxDuration:(double)maxStoreDuration;
+
 @property (nonatomic, readonly) NSDictionary *storedDevices;
 
 @end

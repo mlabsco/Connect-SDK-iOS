@@ -431,6 +431,11 @@
     return [NSDictionary dictionaryWithDictionary:deviceDictionary];
 }
 
+- (void) updateMaxDuration: (double) maxStoreDuration
+{
+    _maxStoreDuration = maxStoreDuration;
+}
+
 - (void) deleteOldUnusedDevices
 {
     __block NSMutableArray *devicesToRemove = [NSMutableArray new];
