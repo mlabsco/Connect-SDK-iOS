@@ -59,6 +59,13 @@
 - (void) removeDevice:(ConnectableDevice *)device;
 
 /*!
+ * Removes a ConnectableDevice's record from the ConnectableDeviceStore.
+ *
+ * @param device ConnectableDevice to remove from the ConnectableDeviceStore
+ */
+- (void) removeDeviceNotAvailable:(ConnectableDevice *)device;
+
+/*!
  * Gets a ConnectableDevice object for a provided id. The id may be for the ConnectableDevice object or any of the device's DeviceServices.
  *
  * @param id Unique ID for a ConnectableDevice or any of its DeviceService objects

@@ -183,6 +183,16 @@
     [self store];
 }
 
+- (void) removeDeviceNotAvailable:(ConnectableDevice *)device
+{
+    if (!device)
+        return;
+
+    [_storedDevices removeObjectForKey:device.id];
+
+    [self store];
+}
+
 - (void) removeAll
 {
     _storedDevices = [NSMutableDictionary new];
