@@ -588,7 +588,7 @@ static NSMutableArray *registeredApps = nil;
     
     if (isVideo)
     {
-        applicationPath = [NSString stringWithFormat:@"15985?t=v&u=%@&k=(null)&videoName=%@&videoFormat=%@",
+        applicationPath = [NSString stringWithFormat:@"15985?t=v&u=%@&h=%%20&k=%%20",
                            [ConnectUtil urlEncode:mediaURL.absoluteString], // content path
                            title ? [ConnectUtil urlEncode:title] : @"(null)", // video name
                            ensureString(mediaType) // video format
