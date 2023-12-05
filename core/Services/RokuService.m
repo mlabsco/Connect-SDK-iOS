@@ -509,7 +509,7 @@ static NSMutableArray *registeredApps = nil;
         return;
     }
     
-    NSString *applicationPath = [NSString stringWithFormat:@"15985?t=p&u=%@&tr=crossfade",
+    NSString *applicationPath = [NSString stringWithFormat:@"15985?t=p&u=%@&h=%%20&k=%%20",
                                  [ConnectUtil urlEncode:imageURL.absoluteString] // content path
                                  ];
     
