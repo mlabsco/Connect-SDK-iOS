@@ -554,12 +554,12 @@
 
 - (void)getAppListWithSuccess:(AppListSuccessBlock)success failure:(FailureBlock)failure
 {
-    NSURL *URL = [NSURL URLWithString:@"ssap://com.webos.applicationManager/listApps"];
+    NSURL *URL = [NSURL URLWithString:@"ssap://com.webos.applicationManager/listLaunchPoints"];
 
     ServiceCommand *command = [[ServiceCommand alloc] initWithDelegate:self.socket target:URL payload:nil];
     command.callbackComplete = ^(NSDictionary *responseDic)
     {
-        NSArray *foundApps = [responseDic objectForKey:@"apps"];
+        NSArray *foundApps = [responseDic objectForKey:@"launchPoints"];
         NSMutableArray *appList = [[NSMutableArray alloc] init];
 
         [foundApps enumerateObjectsUsingBlock:^(NSDictionary *appInfo, NSUInteger idx, BOOL *stop)
